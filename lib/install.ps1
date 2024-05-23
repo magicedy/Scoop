@@ -81,7 +81,7 @@ function install_app($app, $architecture, $global, $suggested, $use_cache = $tru
 }
 
 function Invoke-CachedDownload ($app, $version, $url, $to, $cookies = $null, $use_cache = $true) {
-    $cached = cache_path $app $version $url
+    $cached = cache_path $app $version $url | Get-AbsolutePath
 
     if (!(Test-Path $cached) -or !$use_cache) {
         ensure $cachedir | Out-Null
